@@ -1,0 +1,19 @@
+name: Discord Notify on MD Update
+
+on:
+  push:
+    paths:
+      - '**.md'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Webhook
+        uses: Ilshidur/action-discord@master
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          message: |
+            📘  Markdown 文件 已被更新！
+            📝 最新提交：${{ github.event.head_commit.message }}
+            🔗 查看提交紀錄：https://github.com/yuyue71/ArcaneGenesis/commit/main
