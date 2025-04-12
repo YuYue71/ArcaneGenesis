@@ -1,4 +1,4 @@
-def Fname() :
-    print("測試用")
+def Fname(x) :
+    print(f"{x}測試用")
 
-Fname()
+Fname(1)
