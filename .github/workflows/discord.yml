@@ -1,16 +1,26 @@
-name: Discord Webhook Push Notify
+name: Push to Discord
 
 on:
   push:
     branches:
-      - main  # 根據你實際的分支名稱修改
+      - main
 
 jobs:
-  notify-discord:
+  notify:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Send message to Discord
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
+          COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          AUTHOR=$(git log -1 --pretty=format:"%an")
+          CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
+
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"content":"喵嗚！主人的 GitHub 有新推送更新了喔～"}' \
-          https://discord.com/api/webhooks/1360508644722085960/vCzy5tNQextPyX0yzM_rYPAajcYYAOJC4KnW-9aHqZfnlOTdlAU2gI_goC5qqIH8Ojbf
+          -d "{\"content\": \"✨ $AUTHOR 推送了一次更新喵！\n✏️ Commit：$COMMIT_MSG\n📂 更新檔案：\n\`\`\`\n$CHANGED_FILES\n\`\`\`\"}" \
+          $DISCORD_WEBHOOK
