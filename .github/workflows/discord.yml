@@ -22,5 +22,5 @@ jobs:
           CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
 
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"content\": \"✨ $AUTHOR 推送了一次更新喵！\n✏️ Commit：$COMMIT_MSG\n📂 更新檔案：\n$CHANGED_FILES"}" \
+          -d "{\"content\": \"✨ $AUTHOR 推送了一次更新喵！\n✏️ Commit：$COMMIT_MSG\n📂 更新檔案：\n\`\`\`\n$CHANGED_FILES\n\`\`\`\"}" \
           $DISCORD_WEBHOOK
