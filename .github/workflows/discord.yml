@@ -1,20 +1,16 @@
-name: Discord Notify on MD Update
+name: Discord Webhook Push Notify
 
 on:
   push:
-    paths:
-      - '**.md'
+    branches:
+      - main  # 根據你實際的分支名稱修改
 
 jobs:
-  notify:
+  notify-discord:
     runs-on: ubuntu-latest
     steps:
-      - name: Debug
-        run: echo "Debugging workflow"
-      - name: Send Discord Webhook
-        uses: Ilshidur/action-discord@master
-        with:
-          args: |
-            📘  Markdown 文件 已被更新！
-            📝 最新提交：${{ github.event.head_commit.message }}
-            🔗 查看提交紀錄：https://github.com/yuyue71/ArcaneGenesis/commit/main
+      - name: Send message to Discord
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content":"喵嗚！主人的 GitHub 有新推送更新了喔～"}' \
+          https://discord.com/api/webhooks/1360508644722085960/vCzy5tNQextPyX0yzM_rYPAajcYYAOJC4KnW-9aHqZfnlOTdlAU2gI_goC5qqIH8Ojbf
