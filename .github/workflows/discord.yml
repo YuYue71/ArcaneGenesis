@@ -22,4 +22,4 @@ jobs:
           CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
 
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"content\": \"✨ $AUTHOR 推送了一次更新喵！\n✏️ Commit：$COMMIT_MSG\n📂 更新檔案：\n----專案連結：[點我](<https://github.com/YuYue71/ArcaneGenesis.git>)\n\"}" $DISCORD_WEBHOOK
+          -d "{\"content\": \"✨ $AUTHOR 推送了一次更新喵！\n✏️ Commit：$COMMIT_MSG\n📂 更新檔案：\n[點擊 -> 專案連結](<https://github.com/YuYue71/ArcaneGenesis.git>)\n\"}" $DISCORD_WEBHOOK
