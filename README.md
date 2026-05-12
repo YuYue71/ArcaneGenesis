@@ -87,11 +87,11 @@
   畫面漸暗進入成員致謝名單END
   ```
 - 專案結構
-  ```bash
+```bash
 D:\Unity Project\Falsiluna\
 ├── Assets/
 │   ├── Art/ (存放 .aseprite 文件)
 │   ├── Maps/ (存放 .ldtk 文件)
 │   ├── Scripts/ (VSCode 編輯的 C#)
 │   └── Audio/ (REAPER 導出的 WAV)
-  ```
+```
