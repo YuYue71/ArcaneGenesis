@@ -86,3 +86,12 @@
   畫面漸暗,出現三十年後,畫面緩慢恢復,並呈現出一張繁榮的城鎮街道上赫然豎立著這對兄妹的雕像,下方刻著救世主的字樣
   畫面漸暗進入成員致謝名單END
   ```
+- 專案結構
+  ```bash
+  D:\Unity Project\Falsiluna\
+├── Assets/
+│   ├── Art/ (存放 .aseprite 文件)
+│   ├── Maps/ (存放 .ldtk 文件)
+│   ├── Scripts/ (VSCode 編輯的 C#)
+│   └── Audio/ (REAPER 導出的 WAV)
+  ```
