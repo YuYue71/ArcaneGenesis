@@ -88,7 +88,7 @@
   ```
 - 專案結構
   ```bash
-  D:\Unity Project\Falsiluna\
+D:\Unity Project\Falsiluna\
 ├── Assets/
 │   ├── Art/ (存放 .aseprite 文件)
 │   ├── Maps/ (存放 .ldtk 文件)
