@@ -85,13 +85,76 @@
   視角切換到掉在地上並有點碎裂的相片,此時畫面中可見相片右上角有著一隻纖細並早已沒了血色的手躺在那裡
   畫面漸暗,出現三十年後,畫面緩慢恢復,並呈現出一張繁榮的城鎮街道上赫然豎立著這對兄妹的雕像,下方刻著救世主的字樣
   畫面漸暗進入成員致謝名單END
+
+  成員致謝名單END後的一幕小彩蛋
+  木屋桌上的日記自動翻到最後一頁：
+  「如果妳醒來了」
+  「那代表我已經不在了」
+  「但沒關係」
+  「妳終於可以看看這個世界了」
+  「——哥哥」
   ```
 - 專案結構
 ```bash
-D:\Unity Project\Falsiluna\
-├── Assets/
-│   ├── Art/ (存放 .aseprite 文件)
-│   ├── Maps/ (存放 .ldtk 文件)
-│   ├── Scripts/ (VSCode 編輯的 C#)
-│   └── Audio/ (REAPER 導出的 WAV)
+d:\Unity Project\Falsiluna\Assets\_Games
+├── 📁 Animations                             # 遊戲動畫資源管理（狀態機與動畫剪輯）
+│   ├── 📁 Boss                               # 頭目（Boss）動畫狀態機與剪輯
+│   ├── 📁 Enemy                              # 普通怪物（Enemy）動畫狀態機與剪輯
+│   └── 📁 Player                             # 主角（Luna）的獨立動畫資源
+│       ├── 📄 Luna_Run_Left.controller       # 現有：Luna 向左跑的動畫狀態機
+│       ├── 📄 Luna_Run_Left_Clip.anim        # 現有：Luna 向左跑的純動畫片段
+│       ├── 📄 Luna_Run_Right.controller      # 現有：Luna 向右跑的動畫狀態機
+│       ├── 📄 Luna_Run_Right_Clip.anim       # 現有：Luna 向右跑的純動畫片段
+│       ├── 📄 standby.controller             # 現有：Luna 待機（Idle）的動畫狀態機
+│       └── 📄 standby_Clip.anim              # 現有：Luna 待機（Idle）的純動畫片段
+├── 📁 Art                                    # 遊戲美術視覺資產
+│   ├── 📁 Characters                         # 角色精靈切圖（Sprites）
+│   ├── 📁 Effects                            # 2D 特效、粒子系統貼圖
+│   ├── 📁 Environment                        # 地形、場景裝飾物件貼圖
+│   ├── 📁 MapsImage                          # 地圖繪製所需的平鋪圖（Tilesets）
+│   │   └── 🖼️ test.png                       # 現有：測試用的地圖切圖
+│   ├── 📁 SourceFiles                        # 美術非原生資產的原始碼存放區
+│   │   └── 📁 Aseprite                       # 搬移至此：未導出的 Aseprite 原始像素動畫檔
+│   │       ├── 📄 Luna_Run_Left.aseprite     # 現有：Luna 向左跑的 Aseprite 畫布
+│   │       ├── 📄 Luna_Run_Right.aseprite    # 現有：Luna 向右跑的 Aseprite 畫布
+│   │       └── 📄 standby.aseprite           # 現有：Luna 待機的 Aseprite 畫布
+│   └── 📁 UI                                 # 遊戲介面（血條、視窗、按鈕）切圖
+├── 📁 Audio                                  # 遊戲音效與音樂
+│   ├── 📁 BGM                                # 背景音樂
+│   ├── 📁 SFX                                # 戰鬥打擊、走動、介面點擊音效
+│   └── 📁 Voice                              # 角色或對話語音
+├── 📁 Maps                                   # LDtk 關聯地圖資料夾
+│   ├── 📁 BossRoom                           # 頭目戰地圖資料夾
+│   ├── 📁 Forest                             # 森林關卡地圖資料夾
+│   ├── 📁 remains                            # 遺跡關卡地圖資料夾
+│   └── 📁 test1                              # 測試地圖資料夾
+│       ├── 📄 test1.ldtk                     # 現有：LDtk 核心地圖專案檔
+│       └── 📄 Test2.ldtkt                    # 現有：LDtk 地圖瓷磚與平鋪規則設定檔
+├── 📁 Prefabs                                # 遊戲預製物（實體化物件物件庫）
+│   ├── 📁 Enemy                              # 各類怪物的配置預製物
+│   ├── 📁 Player                             # 主角 Luna 的本體預製物
+│   ├── 📁 Props                              # 可互動道具、寶箱、傳送門
+│   └── 📁 UI                                 # 各個 UI 視窗面板的預製物
+├── 📁 Scenes                                 # 遊戲核心場景（.unity 檔案）
+│   ├── 📁 BossRoom                           # 頭目戰專屬場景
+│   ├── 📁 Forest                             # 森林關卡場景
+│   ├── 📁 MainMenu                           # 遊戲主選單場景
+│   └── 📁 remains                            # 遺跡關卡場景
+├── 📁 ScriptableObjects                      # 數據驅動資產（數值與文字資料庫）
+│   ├── 📁 Dialogue                           # 劇情文本、對話樹資料
+│   ├── 📁 Enemies                            # 怪物屬性（血量、攻擊力等數值設定）
+│   ├── 📁 Localization                       # 多國語言本地化翻譯文本
+│   └── 📁 Skills                             # 主角技能、天賦數值配置
+├── 📁 Scripts                                # 核心 C# 程式碼邏輯
+│   ├── 📁 AI                                 # 行為樹、狀態機等怪物 AI 邏輯
+│   ├── 📁 Combat                             # 傷害判定、受擊、血量控制邏輯
+│   ├── 📁 Core                               # 遊戲核心底層全局邏輯
+│   │   └── 📄 CameraFollow.cs                # 現有：相機平滑跟隨與邊界控制腳本
+│   ├── 📁 Managers                           # 單例管理群（AudioManager、SceneLoader）
+│   ├── 📁 Player                             # 主角專屬控制邏輯
+│   │   └── 📄 PlayerController.cs            # 現有：主角核心移動與狀態控制腳本
+│   ├── 📁 Systems                            # 存檔系統、事件系統等全局系統
+│   └── 📁 UI                                 # 各個 UI 介面的面板元件控制器
+├── 📄 LunaInputActions.inputactions          # 現有：新版 Input System 的按鍵/搖桿對應表
+└── 📄 ZeroFriction.physicsMaterial2D         # 現有：2D 物理材質（用於防止主角靠牆被摩擦力卡住）
 ```
